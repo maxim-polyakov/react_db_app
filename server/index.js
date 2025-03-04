@@ -5,11 +5,11 @@ const router = require('./src/app/routes/index')
 const db = require('./src/db/index.ts')
 const messages = require('./src/db/schema.ts')
 const PORT = process.env.PORT || 5000
-
+const cors = require('cors')
 const app = express()
 app.use(express.json());
 app.use('/api', router)
-
+app.use(cors())
 app.get("/api/", async function(req, res){
     const data = await db.db
         .select()
