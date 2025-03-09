@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
-    "build": "babel src --out-dir build",
-    "start": "nodemon --exec babel-node index.js",
+    "start": "nodemon index.js",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "tsx ./src/db/migrate.ts"
   },
