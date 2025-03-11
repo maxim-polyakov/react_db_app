@@ -19,6 +19,7 @@ function App() {
           <input type="text" placeholder="Message" name="item_number" required onChange={(e)=>setValue(e.target.value)}/>
           <button onClick={()=>create({value})}>Send POST</button>
           <button onClick={()=>setSvalue(fetch())}>Get POST</button>
+          <button onClick={()=>setCount(count + 1)}>Get Count</button>
           <output>{svalue}</output>
         <Image
             width={300}
