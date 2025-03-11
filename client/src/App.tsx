@@ -5,13 +5,11 @@ import { Image } from "react-bootstrap";
 import { create } from './actions/create.js'
 import { fetch } from './actions/fetch.js'
 
-
-
-
 function App() {
   const [value, setValue] = useState('');
   const [svalue, setSvalue] = useState('');
   const [count, setCount] = useState(1);
+
   return (
     <div className="App">
       <header className="App-header">
