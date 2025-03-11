@@ -1,28 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState } from "react";
-import axios from "axios";
+import { Button, Card, Col, Container, Image, Row } from "react-bootstrap";
+import { create } from './actions/create.js'
+import { fetch } from './actions/fetch.js'
 
-const $host = axios.create({
-  baseURL: "http://localhost:5000",
-});
+
 
 
 function App() {
   const [value, setValue] = useState('');
   const [svalue, setSvalue] = useState('');
-
-  const create = async (inpt) => {
-    const { data } = await $host.post("api/", inpt);
-    return data;
-  };
-
-  const fetch = async () => {
-    const { data } = await $host.get("api/");
-
-    return data[data.length - 1].message.toString()
-  };
-
   return (
     <div className="App">
       <header className="App-header">
@@ -31,6 +19,11 @@ function App() {
           <button onClick={()=>create({value})}>Send POST</button>
           <button onClick={()=>setSvalue(fetch())}>Get POST</button>
           <output>{svalue}</output>
+        <Image
+            width={300}
+            height={300}
+            src={`${process.env.REACT_APP_API_URL}/${1}.jpg`}
+        ></Image>
       </header>
     </div>
   );

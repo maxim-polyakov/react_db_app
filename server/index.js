@@ -1,29 +1,18 @@
-
 require('dotenv').config()
 const express = require('express')
-const router = require('./src/app/routes/index')
-const db = require('./src/db/index.ts')
-const messages = require('./src/db/schema.ts')
+const router = require('./src/app/routes/index.js')
 const PORT = process.env.PORT || 5000
 const cors = require('cors')
+const fileUpload = require('express-fileupload')
+const path = require("path");
 const app = express()
+
+
 app.use(express.json());
-app.use('/api', router)
+app.use(express.static(path.resolve(__dirname, './src/static')))
 app.use(cors())
-app.get("/api/", async function(req, res){
-    const data = await db.db
-        .select()
-        .from(messages.mymessages)
-    res.send(data);
-});
-
-app.post("/api/", async function (req, res) {
-    const out = await db.db.insert(messages.mymessages).values({
-        message:req.body['value'],
-    })
-    res.send(out);
-});
-
+app.use(fileUpload({}))
+app.use('/api', router)
 
 const start = async () => {
     try {
@@ -32,6 +21,5 @@ const start = async () => {
         console.log(e)
     }
 }
-
 
 start()
