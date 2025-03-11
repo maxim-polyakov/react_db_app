@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState } from "react";
-import { Button, Card, Col, Container, Image, Row } from "react-bootstrap";
+import { Image } from "react-bootstrap";
 import { create } from './actions/create.js'
 import { fetch } from './actions/fetch.js'
 
@@ -11,6 +11,7 @@ import { fetch } from './actions/fetch.js'
 function App() {
   const [value, setValue] = useState('');
   const [svalue, setSvalue] = useState('');
+  const [count, setCount] = useState(1);
   return (
     <div className="App">
       <header className="App-header">
@@ -22,7 +23,7 @@ function App() {
         <Image
             width={300}
             height={300}
-            src={`${process.env.REACT_APP_API_URL}/${1}.jpg`}
+            src={`${process.env.REACT_APP_API_URL}/${count}.jpg`}
         ></Image>
       </header>
     </div>
