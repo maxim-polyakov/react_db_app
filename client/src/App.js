@@ -1,7 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
 import { useState } from "react";
-import { Image } from "react-bootstrap";
 import { create } from './actions/create.js'
 import { fetch } from './actions/fetch.js'
 
@@ -13,17 +11,18 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={`${process.env.REACT_APP_API_URL}/${count}.jpg`}
+             width={300}
+             height={300}/>
           <input type="text" placeholder="Message" name="item_number" required onChange={(e)=>setValue(e.target.value)}/>
           <button onClick={()=>create({value})}>Send POST</button>
           <button onClick={()=>setSvalue(fetch())}>Get POST</button>
           <button onClick={()=>setCount(count + 1)}>Get Count</button>
           <output>{svalue}</output>
-        <Image
-            width={300}
-            height={300}
-            src={`${process.env.REACT_APP_API_URL}/${count}.jpg`}
-        ></Image>
+        <div className="video-section">
+          <video src={`${process.env.REACT_APP_API_URL}/${3}.mp4`}
+          controls={true}></video>
+        </div>
       </header>
     </div>
   );
